@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Moflick</string>
+    <string name="search_title">Search Movie</string>
+    <string name="error_general">Terjadi kesalahan</string>
+</resources>
