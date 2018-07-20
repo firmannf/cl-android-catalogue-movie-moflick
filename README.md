@@ -1,2 +1,2 @@
-# cl-android-moflick
-This repo contains an android apps for showing list of movies from TMDB API.
+# cl-android-catalogue-movie-moflick
+This repo contains an android apps for showing movies from TMDB API.
