@@ -20,7 +20,7 @@
             android:layout_width="192dp"
             android:layout_height="148dp"
             android:layout_centerHorizontal="true"
-            android:background="@color/grey_300"
+            android:background="@color/grey_400"
             android:scaleType="fitXY" />
 
         <TextView

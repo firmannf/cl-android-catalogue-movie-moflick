@@ -16,26 +16,30 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/main_toolbar"
             android:layout_width="match_parent"
+            app:layout_scrollFlags="scroll|enterAlways"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
-    <ProgressBar
-        android:id="@+id/main_progressbar_movies"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/main_recyclerview_movies"
+    <FrameLayout
+        android:id="@+id/main_framelayout_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="4dp"
-        app:layoutManager="GridLayoutManager"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:spanCount="3"
-        tools:listitem="@layout/row_movie" />
+        android:layout_marginBottom="?attr/actionBarSize"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/main_bottomnavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground"
+        android:foreground="?attr/selectableItemBackground"
+        app:itemBackground="@color/white"
+        app:itemIconTint="@color/selector_color_menu"
+        app:itemTextColor="@color/selector_color_menu"
+        app:menu="@menu/menu_bottom_navigation" />
 
 </android.support.design.widget.CoordinatorLayout>

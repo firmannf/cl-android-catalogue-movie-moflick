@@ -1,14 +1,10 @@
-package com.firmannf.moflick.screen.main;
+package com.firmannf.moflick.data.source.remote;
 
 import android.content.Context;
-import android.preference.PreferenceActivity;
 import android.support.annotation.Nullable;
 import android.support.v4.content.AsyncTaskLoader;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.firmannf.moflick.BuildConfig;
-import com.firmannf.moflick.R;
 import com.firmannf.moflick.data.MovieModel;
 import com.firmannf.moflick.data.MovieResultModel;
 import com.firmannf.moflick.util.AppConstant;
@@ -25,11 +21,11 @@ import cz.msebera.android.httpclient.Header;
  * Created by codelabs on 17/07/18.
  */
 
-public class MoviePopularLoader extends AsyncTaskLoader<List<MovieModel>> {
+public class MovieNowPlayingLoader extends AsyncTaskLoader<List<MovieModel>> {
     private List<MovieModel> movies;
     private boolean hasResult = false;
 
-    MoviePopularLoader(Context context) {
+    public MovieNowPlayingLoader(Context context) {
         super(context);
 
         onContentChanged();
@@ -66,7 +62,7 @@ public class MoviePopularLoader extends AsyncTaskLoader<List<MovieModel>> {
         final List<MovieModel> movies = new ArrayList<>();
 
         SyncHttpClient client = new SyncHttpClient();
-        String url = AppConstant.MOVIE_POPULAR_URL + "?api_key=" + BuildConfig.THE_MOVIE_DB_API_KEY_DEBUG;
+        String url = AppConstant.MOVIE_NOW_PLAYING_URL + "?api_key=" + BuildConfig.THE_MOVIE_DB_API_KEY_DEBUG;
 
         client.get(url, new AsyncHttpResponseHandler() {
             @Override

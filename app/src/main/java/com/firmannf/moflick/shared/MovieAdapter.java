@@ -1,4 +1,4 @@
-package com.firmannf.moflick.screen.main;
+package com.firmannf.moflick.shared;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -13,7 +13,6 @@ import com.bumptech.glide.Glide;
 import com.firmannf.moflick.R;
 import com.firmannf.moflick.data.MovieModel;
 import com.firmannf.moflick.util.AppConstant;
-import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -71,7 +70,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
             itemView.setOnClickListener(this);
         }
-
 
         @Override
         public void onClick(View v) {
