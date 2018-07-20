@@ -75,7 +75,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
         @Override
         public void onClick(View v) {
-            movieItemListener.onMovieClick(new Gson().toJson(movies.get(getAdapterPosition())));
+            movieItemListener.onMovieClick(movies.get(getAdapterPosition()));
         }
     }
 
@@ -85,6 +85,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     }
 
     public interface MovieItemListener {
-        void onMovieClick(String extras);
+        void onMovieClick(MovieModel movieModel);
     }
 }

@@ -86,9 +86,9 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onMovieClick(String extras) {
+    public void onMovieClick(MovieModel extras) {
         Intent intent = new Intent(this, MovieDetailActivity.class);
-        intent.putExtra(AppConstant.EXTRAS_MOVIE_JSON, extras);
+        intent.putExtra(AppConstant.EXTRAS_MOVIE, extras);
         startActivity(intent);
     }
 
