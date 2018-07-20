@@ -40,8 +40,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         setupToolbar();
 
         Intent intent = getIntent();
-        String movieJson = intent.getStringExtra(AppConstant.EXTRAS_MOVIE_JSON);
-        MovieModel movie = new Gson().fromJson(movieJson, MovieModel.class);
+        MovieModel movie = intent.getParcelableExtra(AppConstant.EXTRAS_MOVIE);
 
         getSupportActionBar().setTitle(movie.getTitle());
         Glide.with(this)

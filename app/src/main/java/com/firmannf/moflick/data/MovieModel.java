@@ -1,5 +1,8 @@
 package com.firmannf.moflick.data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
@@ -9,7 +12,7 @@ import org.json.JSONObject;
  * Created by codelabs on 16/07/18.
  */
 
-public class MovieModel {
+public class MovieModel implements Parcelable {
     private int id;
     private String title;
     @SerializedName("vote_average")
@@ -67,4 +70,43 @@ public class MovieModel {
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
+        dest.writeString(this.title);
+        dest.writeFloat(this.voteAverage);
+        dest.writeString(this.posterPath);
+        dest.writeString(this.overview);
+        dest.writeString(this.releaseDate);
+    }
+
+    public MovieModel() {
+    }
+
+    protected MovieModel(Parcel in) {
+        this.id = in.readInt();
+        this.title = in.readString();
+        this.voteAverage = in.readFloat();
+        this.posterPath = in.readString();
+        this.overview = in.readString();
+        this.releaseDate = in.readString();
+    }
+
+    public static final Creator<MovieModel> CREATOR = new Creator<MovieModel>() {
+        @Override
+        public MovieModel createFromParcel(Parcel source) {
+            return new MovieModel(source);
+        }
+
+        @Override
+        public MovieModel[] newArray(int size) {
+            return new MovieModel[size];
+        }
+    };
 }

@@ -12,6 +12,6 @@ public class AppConstant {
 
     public static int MOVIE_LOADER_ID = 101;
 
-    public static String EXTRAS_MOVIE_JSON = "extras-movie-json";
+    public static String EXTRAS_MOVIE = "extras-movie";
     public static String EXTRAS_TITLE = "extras-title";
 }
