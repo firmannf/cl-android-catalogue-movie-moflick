@@ -62,11 +62,7 @@ public class MainActivity extends AppCompatActivity
                 addFragment(SearchFragment.newInstance(query), SearchFragment.class.getSimpleName());
 
                 // Hide Keyboard
-                InputMethodManager inputMethodManager =
-                        (InputMethodManager) getSystemService(
-                                Activity.INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(
-                        getCurrentFocus().getWindowToken(), 0);
+                searchView.clearFocus();
                 return true;
             }
 
