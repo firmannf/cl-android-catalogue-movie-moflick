@@ -14,4 +14,9 @@
         android:id="@+id/navigation_upcoming"
         android:icon="@drawable/ic_fast_forward_black_24dp"
         android:title="@string/nav_upcoming" />
+
+    <item
+        android:id="@+id/navigation_loved"
+        android:icon="@drawable/ic_love_black_24dp"
+        android:title="@string/nav_loved" />
 </menu>

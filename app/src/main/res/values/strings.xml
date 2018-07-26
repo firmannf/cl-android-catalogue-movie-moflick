@@ -4,10 +4,12 @@
     <string name="nav_nowplaying">Now Playing</string>
     <string name="nav_popular">Popular</string>
     <string name="nav_upcoming">Upcoming</string>
+    <string name="nav_loved">Loved</string>
 
-    <string name="text_title_upcoming">Upcoming</string>
-    <string name="text_title_popular">Popular</string>
     <string name="text_title_now_playing">Now Playing</string>
+    <string name="text_title_popular">Popular</string>
+    <string name="text_title_upcoming">Upcoming</string>
+    <string name="text_title_loved">Loved</string>
     <string name="text_menu_search">Search Movie</string>
     <string name="text_menu_change_language">Change Language</string>
 </resources>

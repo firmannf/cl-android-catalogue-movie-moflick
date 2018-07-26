@@ -107,15 +107,19 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         switch (id) {
             case R.id.navigation_nowplaying:
-                getSupportActionBar().setTitle(getString(R.string.text_title_now_playing));
+                setToolbarTitle(getString(R.string.text_title_now_playing));
                 replaceFragment(NowPlayingFragment.newInstance());
                 break;
             case R.id.navigation_popular:
-                getSupportActionBar().setTitle(getString(R.string.text_title_popular));
+                setToolbarTitle(getString(R.string.text_title_popular));
                 replaceFragment(PopularFragment.newInstance());
                 break;
             case R.id.navigation_upcoming:
-                getSupportActionBar().setTitle(getString(R.string.text_title_upcoming));
+                setToolbarTitle(getString(R.string.text_title_upcoming));
+                replaceFragment(UpcomingFragment.newInstance());
+                break;
+            case R.id.navigation_loved:
+                setToolbarTitle(getString(R.string.text_title_loved));
                 replaceFragment(UpcomingFragment.newInstance());
                 break;
         }
@@ -153,5 +157,10 @@ public class MainActivity extends AppCompatActivity
 
     public BottomNavigationView getBottomNavigationView() {
         return bottomNavigationView;
+    }
+
+    private void setToolbarTitle(String title) {
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setTitle(title);
     }
 }

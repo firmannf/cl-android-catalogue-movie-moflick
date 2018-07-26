@@ -4,10 +4,12 @@
     <string name="nav_nowplaying">Sedang Tayang</string>
     <string name="nav_popular">Populer</string>
     <string name="nav_upcoming">Segera Tayang</string>
+    <string name="nav_loved">Disukai</string>
 
-    <string name="text_title_upcoming">Segera Tayang</string>
-    <string name="text_title_popular">Populer</string>
     <string name="text_title_now_playing">Sedang Tayang</string>
+    <string name="text_title_popular">Populer</string>
+    <string name="text_title_upcoming">Segera Tayang</string>
+    <string name="text_title_loved">Disukai</string>
     <string name="text_menu_search">Cari Film</string>
     <string name="text_menu_change_language">Ganti Bahasa</string>
 </resources>

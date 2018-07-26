@@ -17,6 +17,7 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="@color/colorPrimary"
+            app:expandedTitleTextAppearance="@style/AppTheme.Text.Transparent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
@@ -36,9 +37,22 @@
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/moviedetail_floatingbutton_love"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/moviedetail_appbar"
+        app:layout_anchorGravity="bottom|right"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_love_border_black_24dp"
+        android:tint="@color/colorPrimary"
+        app:backgroundTint="@color/white"
+        app:fabSize="normal" />
+
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
         android:background="@color/white"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
