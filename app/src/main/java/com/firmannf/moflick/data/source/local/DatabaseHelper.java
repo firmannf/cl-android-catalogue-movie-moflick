@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import static android.provider.BaseColumns._ID;
+import static com.firmannf.moflick.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_IS_LOVED;
 import static com.firmannf.moflick.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_OVERVIEW;
 import static com.firmannf.moflick.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_POSTER_PATH;
 import static com.firmannf.moflick.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_RELEASE_DATE;
@@ -34,7 +35,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     COLUMN_VOTE_AVERAGE + REAL_TYPE + NOT_NULL + COMMA_SEP +
                     COLUMN_POSTER_PATH + TEXT_TYPE + NOT_NULL + COMMA_SEP +
                     COLUMN_OVERVIEW + TEXT_TYPE + NOT_NULL + COMMA_SEP +
-                    COLUMN_RELEASE_DATE + TEXT_TYPE + NOT_NULL +
+                    COLUMN_RELEASE_DATE + TEXT_TYPE + NOT_NULL + COMMA_SEP +
+                    COLUMN_IS_LOVED + INTEGER_TYPE + NOT_NULL +
                     " )";
     private static final String SQL_DROP_TABLE_FAVORITE_MOVIE =
             "DROP TABLE IF EXISTS " + TABLE_FAVORITE_MOVIE;

@@ -11,6 +11,7 @@ import com.firmannf.moflick.data.MovieModel;
 import java.util.ArrayList;
 
 import static android.provider.BaseColumns._ID;
+import static com.firmannf.moflick.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_IS_LOVED;
 import static com.firmannf.moflick.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_OVERVIEW;
 import static com.firmannf.moflick.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_POSTER_PATH;
 import static com.firmannf.moflick.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_RELEASE_DATE;
@@ -64,6 +65,7 @@ public class MovieHelper {
                 movie.setPosterPath(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_POSTER_PATH)));
                 movie.setOverview(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_OVERVIEW)));
                 movie.setReleaseDate(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_RELEASE_DATE)));
+                movie.setLoved(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_IS_LOVED)));
                 movies.add(movie);
                 cursor.moveToNext();
             } while (!cursor.isAfterLast());
@@ -80,6 +82,7 @@ public class MovieHelper {
         values.put(COLUMN_POSTER_PATH, movie.getPosterPath());
         values.put(COLUMN_OVERVIEW, movie.getOverview());
         values.put(COLUMN_RELEASE_DATE, movie.getReleaseDate());
+        values.put(COLUMN_IS_LOVED, movie.isLoved());
         return sqLiteDatabase.insert(TABLE_FAVORITE_MOVIE, null, values);
     }
 
@@ -90,6 +93,7 @@ public class MovieHelper {
         values.put(COLUMN_POSTER_PATH, movie.getPosterPath());
         values.put(COLUMN_OVERVIEW, movie.getOverview());
         values.put(COLUMN_RELEASE_DATE, movie.getReleaseDate());
+        values.put(COLUMN_IS_LOVED, movie.isLoved());
         return sqLiteDatabase.update(TABLE_FAVORITE_MOVIE,
                 values,
                 _ID + "= '" + movie.getId() + "'",

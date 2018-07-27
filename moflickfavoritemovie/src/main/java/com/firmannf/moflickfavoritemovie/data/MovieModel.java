@@ -1,23 +1,18 @@
-package com.firmannf.moflick.data;
+package com.firmannf.moflickfavoritemovie.data;
 
 import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.Gson;
-import com.google.gson.annotations.SerializedName;
-
-import org.json.JSONObject;
-
 import static android.provider.BaseColumns._ID;
-import static com.firmannf.moflick.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_OVERVIEW;
-import static com.firmannf.moflick.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_POSTER_PATH;
-import static com.firmannf.moflick.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_RELEASE_DATE;
-import static com.firmannf.moflick.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_TITLE;
-import static com.firmannf.moflick.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_VOTE_AVERAGE;
-import static com.firmannf.moflick.data.source.local.DatabaseContract.getColumnFloat;
-import static com.firmannf.moflick.data.source.local.DatabaseContract.getColumnInt;
-import static com.firmannf.moflick.data.source.local.DatabaseContract.getColumnString;
+import static com.firmannf.moflickfavoritemovie.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_OVERVIEW;
+import static com.firmannf.moflickfavoritemovie.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_POSTER_PATH;
+import static com.firmannf.moflickfavoritemovie.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_RELEASE_DATE;
+import static com.firmannf.moflickfavoritemovie.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_TITLE;
+import static com.firmannf.moflickfavoritemovie.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_VOTE_AVERAGE;
+import static com.firmannf.moflickfavoritemovie.data.source.local.DatabaseContract.getColumnFloat;
+import static com.firmannf.moflickfavoritemovie.data.source.local.DatabaseContract.getColumnInt;
+import static com.firmannf.moflickfavoritemovie.data.source.local.DatabaseContract.getColumnString;
 
 /**
  * Created by codelabs on 16/07/18.
@@ -26,12 +21,9 @@ import static com.firmannf.moflick.data.source.local.DatabaseContract.getColumnS
 public class MovieModel implements Parcelable {
     private int id;
     private String title;
-    @SerializedName("vote_average")
     private float voteAverage;
-    @SerializedName("poster_path")
     private String posterPath;
     private String overview;
-    @SerializedName("release_date")
     private String releaseDate;
     private int isLoved;
 

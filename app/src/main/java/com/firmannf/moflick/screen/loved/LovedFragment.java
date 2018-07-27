@@ -1,7 +1,10 @@
 package com.firmannf.moflick.screen.loved;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,6 +13,8 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,21 +22,20 @@ import android.widget.ProgressBar;
 
 import com.firmannf.moflick.R;
 import com.firmannf.moflick.data.MovieModel;
-import com.firmannf.moflick.data.source.remote.MovieNowPlayingLoader;
+import com.firmannf.moflick.data.source.local.MovieLovedLoader;
 import com.firmannf.moflick.screen.detail.MovieDetailActivity;
-import com.firmannf.moflick.shared.MovieAdapter;
+import com.firmannf.moflick.shared.MovieCursorAdapter;
 import com.firmannf.moflick.util.AppConstant;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
+import static com.firmannf.moflick.data.source.local.DatabaseContract.CONTENT_URI;
+
 public class LovedFragment extends Fragment implements
-        MovieAdapter.MovieItemListener,
-        LoaderManager.LoaderCallbacks<List<MovieModel>> {
+        MovieCursorAdapter.MovieItemListener,
+        LoaderManager.LoaderCallbacks<Cursor> {
 
     @BindView(R.id.loved_progressbar)
     ProgressBar progressBarLoved;
@@ -39,7 +43,7 @@ public class LovedFragment extends Fragment implements
     RecyclerView recyclerViewLoved;
     private Unbinder unbinder;
 
-    private MovieAdapter movieAdapter;
+    private MovieCursorAdapter movieAdapter;
 
     public LovedFragment() {
     }
@@ -62,45 +66,52 @@ public class LovedFragment extends Fragment implements
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+
+        getActivity().getSupportLoaderManager().restartLoader(AppConstant.MOVIE_LOVED_LOADER_ID,
+                null,
+                this);
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
     }
 
     @Override
-    public void onMovieClick(MovieModel extras) {
+    public void onMovieClick(int id) {
         Intent intent = new Intent(getActivity(), MovieDetailActivity.class);
-        intent.putExtra(AppConstant.EXTRAS_MOVIE, extras);
+        intent.setData(Uri.parse(CONTENT_URI + "/" + id));
         startActivity(intent);
     }
 
     @NonNull
     @Override
-    public Loader<List<MovieModel>> onCreateLoader(int id, @Nullable Bundle args) {
+    public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
         if (progressBarLoved != null)
             progressBarLoved.setVisibility(View.VISIBLE);
-        movieAdapter.replaceData(new ArrayList<MovieModel>());
-        return new MovieNowPlayingLoader(getActivity());
+        movieAdapter.replaceData(null);
+        return new MovieLovedLoader(getActivity());
     }
 
     @Override
-    public void onLoadFinished(@NonNull Loader<List<MovieModel>> loader, List<MovieModel> data) {
+    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
         if (progressBarLoved != null)
             progressBarLoved.setVisibility(View.GONE);
-
         movieAdapter.replaceData(data);
     }
 
     @Override
-    public void onLoaderReset(@NonNull Loader<List<MovieModel>> loader) {
-        movieAdapter.replaceData(new ArrayList<MovieModel>());
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
+        movieAdapter.replaceData(null);
     }
 
     private void setupRecyclerView() {
         recyclerViewLoved.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         recyclerViewLoved.setHasFixedSize(true);
-
-        movieAdapter = new MovieAdapter(getActivity(), new ArrayList<MovieModel>(), this);
+        movieAdapter = new MovieCursorAdapter(getActivity(), null, this);
         recyclerViewLoved.setAdapter(movieAdapter);
     }
 }

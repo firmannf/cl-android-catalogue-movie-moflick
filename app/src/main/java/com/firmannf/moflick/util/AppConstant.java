@@ -18,6 +18,10 @@ public class AppConstant {
     public static int MOVIE_SEARCH_LOADER_ID = 104;
     public static int MOVIE_LOVED_LOADER_ID = 105;
 
+    public static String EXTRAS_FROM_LOVED = "from-loved";
     public static String EXTRAS_MOVIE = "extras-movie";
     public static String EXTRAS_TITLE = "extras-title";
+
+    public static String KEY_APP_PREFERENCE = "app-preference";
+    public static String KEY_APP_PREFERENCE_FIRST_RUN = "app-preference-first-run";
 }

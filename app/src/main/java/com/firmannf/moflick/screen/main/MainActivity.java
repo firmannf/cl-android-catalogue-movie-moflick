@@ -18,10 +18,13 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.firmannf.moflick.R;
+import com.firmannf.moflick.data.source.local.MovieHelper;
+import com.firmannf.moflick.screen.loved.LovedFragment;
 import com.firmannf.moflick.screen.now_playing.NowPlayingFragment;
 import com.firmannf.moflick.screen.popular.PopularFragment;
 import com.firmannf.moflick.screen.search.SearchFragment;
 import com.firmannf.moflick.screen.upcoming.UpcomingFragment;
+import com.firmannf.moflick.util.AppPreference;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,6 +42,15 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        AppPreference appPreference = new AppPreference(this);
+        Boolean firstRun = appPreference.getFirstRun();
+        if (firstRun) {
+            MovieHelper movieHelper = new MovieHelper(this);
+            movieHelper.open();
+            movieHelper.close();
+            appPreference.setFirstRun(false);
+        }
 
         setupToolbar();
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
@@ -120,7 +132,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.navigation_loved:
                 setToolbarTitle(getString(R.string.text_title_loved));
-                replaceFragment(UpcomingFragment.newInstance());
+                replaceFragment(LovedFragment.newInstance());
                 break;
         }
 

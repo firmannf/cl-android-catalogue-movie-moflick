@@ -1,37 +1,35 @@
-package com.firmannf.moflick.screen.detail;
+package com.firmannf.moflickfavoritemovie.screen.detail;
 
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.firmannf.moflick.R;
-import com.firmannf.moflick.data.MovieModel;
-import com.firmannf.moflick.util.AppConstant;
+import com.firmannf.moflickfavoritemovie.R;
+import com.firmannf.moflickfavoritemovie.data.MovieModel;
+import com.firmannf.moflickfavoritemovie.util.AppConstant;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static android.provider.BaseColumns._ID;
-import static com.firmannf.moflick.data.source.local.DatabaseContract.CONTENT_URI;
-import static com.firmannf.moflick.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_IS_LOVED;
-import static com.firmannf.moflick.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_OVERVIEW;
-import static com.firmannf.moflick.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_POSTER_PATH;
-import static com.firmannf.moflick.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_RELEASE_DATE;
-import static com.firmannf.moflick.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_TITLE;
-import static com.firmannf.moflick.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_VOTE_AVERAGE;
+import static com.firmannf.moflickfavoritemovie.data.source.local.DatabaseContract.CONTENT_URI;
+import static com.firmannf.moflickfavoritemovie.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_IS_LOVED;
+import static com.firmannf.moflickfavoritemovie.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_OVERVIEW;
+import static com.firmannf.moflickfavoritemovie.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_POSTER_PATH;
+import static com.firmannf.moflickfavoritemovie.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_RELEASE_DATE;
+import static com.firmannf.moflickfavoritemovie.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_TITLE;
+import static com.firmannf.moflickfavoritemovie.data.source.local.DatabaseContract.DictionaryColumns.COLUMN_VOTE_AVERAGE;
 
 public class MovieDetailActivity extends AppCompatActivity {
-
     @BindView(R.id.moviedetail_toolbar)
     Toolbar toolbar;
     @BindView(R.id.moviedetail_imageview_poster)
@@ -58,17 +56,13 @@ public class MovieDetailActivity extends AppCompatActivity {
         setupToolbar();
 
         Intent intent = getIntent();
-        if (intent.getStringExtra(AppConstant.EXTRAS_FROM_LOVED) != null) {
-            Uri uri = getIntent().getData();
-            if (uri != null) {
-                Cursor cursor = getContentResolver().query(uri, null, null, null, null);
-                if (cursor != null) {
-                    if (cursor.moveToFirst()) movie = new MovieModel(cursor);
-                    cursor.close();
-                }
+        Uri uri = getIntent().getData();
+        if (uri != null) {
+            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+            if (cursor != null) {
+                if (cursor.moveToFirst()) movie = new MovieModel(cursor);
+                cursor.close();
             }
-        } else {
-            movie = intent.getParcelableExtra(AppConstant.EXTRAS_MOVIE);
         }
 
         getSupportActionBar().setTitle(movie.getTitle());

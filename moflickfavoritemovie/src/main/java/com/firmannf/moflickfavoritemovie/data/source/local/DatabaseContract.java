@@ -1,4 +1,4 @@
-package com.firmannf.moflick.data.source.local;
+package com.firmannf.moflickfavoritemovie.data.source.local;
 
 import android.database.Cursor;
 import android.net.Uri;
