@@ -10,6 +10,8 @@
     <permission
         android:name="com.firmannf.moflick.WRITE_DATABASE"
         android:protectionLevel="normal" />
+    <uses-permission android:name="com.firmannf.moflick.READ_DATABASE" />
+    <uses-permission android:name="com.firmannf.moflick.WRITE_DATABASE" />
 
     <application
         android:allowBackup="true"
@@ -35,6 +37,19 @@
             android:exported="true"
             android:readPermission="com.firmannf.moflick.READ_DATABASE"
             android:writePermission="com.firmannf.moflick.WRITE_DATABASE" />
+
+        <receiver android:name=".widget.favorite.FavoriteWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/favorite_widget_info" />
+        </receiver>
+        <service
+            android:name=".widget.StackWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>
 
 </manifest>

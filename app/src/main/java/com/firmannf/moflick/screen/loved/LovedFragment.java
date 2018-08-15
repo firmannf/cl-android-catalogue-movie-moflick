@@ -1,7 +1,6 @@
 package com.firmannf.moflick.screen.loved;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -13,15 +12,12 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.firmannf.moflick.R;
-import com.firmannf.moflick.data.MovieModel;
 import com.firmannf.moflick.data.source.local.MovieLovedLoader;
 import com.firmannf.moflick.screen.detail.MovieDetailActivity;
 import com.firmannf.moflick.shared.MovieCursorAdapter;

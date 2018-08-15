@@ -12,4 +12,8 @@
     <string name="text_title_loved">Loved</string>
     <string name="text_menu_search">Search Movie</string>
     <string name="text_menu_change_language">Change Language</string>
+
+    <string name="text_widget_empty">No Data</string>
+    <string name="text_widget_favorite_title">Your Favorite Movies</string>
+    <string name="add_widget">Add widget</string>
 </resources>

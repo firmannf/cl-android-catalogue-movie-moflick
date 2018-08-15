@@ -11,6 +11,7 @@ public class AppConstant {
     public static final String MOVIE_UPCOMING_URL = BASE_API_URL + "movie/upcoming/";
     public static final String MOVIE_NOW_PLAYING_URL = BASE_API_URL + "movie/now_playing/";
     public static final String BASE_IMAGE_URL = "http://image.tmdb.org/t/p/w185/";
+    public static final String BASE_BIG_IMAGE_URL = "http://image.tmdb.org/t/p/w500/";
 
     public static int MOVIE_NOW_PLAYING_LOADER_ID = 101;
     public static int MOVIE_POPULAR_LOADER_ID = 102;
@@ -21,6 +22,7 @@ public class AppConstant {
     public static String EXTRAS_FROM_LOVED = "from-loved";
     public static String EXTRAS_MOVIE = "extras-movie";
     public static String EXTRAS_TITLE = "extras-title";
+    public static String ACTION_TOAST = "action-toast";
 
     public static String KEY_APP_PREFERENCE = "app-preference";
     public static String KEY_APP_PREFERENCE_FIRST_RUN = "app-preference-first-run";
