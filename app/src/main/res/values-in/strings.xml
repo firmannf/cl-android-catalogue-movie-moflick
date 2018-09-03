@@ -12,4 +12,10 @@
     <string name="text_title_loved">Disukai</string>
     <string name="text_menu_search">Cari Film</string>
     <string name="text_menu_change_language">Ganti Bahasa</string>
+
+    <string name="text_widget_empty">Tidak Ada Data</string>
+    <string name="text_widget_favorite_title">Film Favoritmu</string>
+    <string name="add_widget">Tambah widget</string>
+    <string name="text_notification_daily_reminder">Kami kangen kamu. Ayo cek daftar film terbaru di Moflick.</string>
+    <string name="text_notification_release_today">release hari ini. Cek di Moflick.</string>
 </resources>

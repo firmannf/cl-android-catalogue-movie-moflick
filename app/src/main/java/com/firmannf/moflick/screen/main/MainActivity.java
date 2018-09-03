@@ -1,6 +1,5 @@
 package com.firmannf.moflick.screen.main;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -15,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 
 import com.firmannf.moflick.R;
 import com.firmannf.moflick.data.source.local.MovieHelper;
@@ -25,6 +23,8 @@ import com.firmannf.moflick.screen.popular.PopularFragment;
 import com.firmannf.moflick.screen.search.SearchFragment;
 import com.firmannf.moflick.screen.upcoming.UpcomingFragment;
 import com.firmannf.moflick.util.AppPreference;
+import com.firmannf.moflick.util.receiver.DailyReleaseNotificationReceiver;
+import com.firmannf.moflick.util.receiver.DailyReminderNotificationReceiver;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,6 +42,9 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        new DailyReminderNotificationReceiver().setNotification(this);
+        new DailyReleaseNotificationReceiver().setNotification(this);
 
         AppPreference appPreference = new AppPreference(this);
         Boolean firstRun = appPreference.getFirstRun();

@@ -16,4 +16,6 @@
     <string name="text_widget_empty">No Data</string>
     <string name="text_widget_favorite_title">Your Favorite Movies</string>
     <string name="add_widget">Add widget</string>
+    <string name="text_notification_daily_reminder">We are missing you. Let\'s check latest movies updates on Moflick.</string>
+    <string name="text_notification_release_today">release today. Check on Moflick.</string>
 </resources>

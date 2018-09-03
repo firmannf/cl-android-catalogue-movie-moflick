@@ -79,7 +79,6 @@ public class StackRemoteViewsFactory implements
         }
 
         remoteViews.setImageViewBitmap(R.id.moviewidget_imageview_poster, bitmap);
-        Log.d("TESTTT", movie.getPosterPath() + " ");
 
         Bundle extras = new Bundle();
         extras.putString(AppConstant.EXTRAS_TITLE, movie.getTitle());
