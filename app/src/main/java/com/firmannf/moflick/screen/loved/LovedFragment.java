@@ -79,6 +79,7 @@ public class LovedFragment extends Fragment implements
     @Override
     public void onMovieClick(int id) {
         Intent intent = new Intent(getActivity(), MovieDetailActivity.class);
+        intent.putExtra(AppConstant.EXTRAS_FROM_LOVED, AppConstant.EXTRAS_FROM_LOVED);
         intent.setData(Uri.parse(CONTENT_URI + "/" + id));
         startActivity(intent);
     }
